@@ -1,31 +1,36 @@
-let boş = 0
-let mermi = 0
-input.onButtonPressed(Button.A, function () {
+boş = 0
+mermi = 0
+
+def on_button_pressed_a():
+    global boş
     boş = randint(1, 6)
-    if (boş == mermi) {
-        basic.showNumber(boş)
-        basic.showLeds(`
+    if boş == mermi:
+        basic.show_number(boş)
+        basic.show_leds("""
             # # # # #
             # # # # #
             # # # # #
             # # # # #
             # # # # #
-            `)
-    } else {
-        basic.showNumber(boş)
-        basic.showLeds(`
+            """)
+    else:
+        basic.show_number(boş)
+        basic.show_leds("""
             . . . . .
             . . . . .
             . . . . .
             . . . . .
             . . . . .
-            `)
-    }
-})
-/**
- */
-input.onGesture(Gesture.Shake, function () {
+            """)
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+"""
+
+"""
+
+def on_gesture_shake():
+    global mermi
     mermi = randint(1, 6)
-    basic.showString("" + (mermi))
-    basic.showString("A")
-})
+    basic.show_string("" + str((mermi)))
+    basic.show_string("A")
+input.on_gesture(Gesture.SHAKE, on_gesture_shake)
